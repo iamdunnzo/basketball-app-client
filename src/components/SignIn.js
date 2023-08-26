@@ -11,7 +11,7 @@ const SignIn = () => {
   });
 
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate('/signin');
 
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const SignIn = () => {
         console.log({ userData });
         setUser(userData);
       }
-      console.log("You Signed In!!!!!!!!");
+      console.log("You Signed In!");
       navigate('/'); 
     } catch (error) {
       console.error('Error signing in:', error);

@@ -6,16 +6,23 @@ const EditCoachForm = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({
     name: '',
-    experience: '',
-    team: '',
-    speciality: '',
+    coachType: '', // Add a default value or initialize as an empty string
+    speciality: '', // Add a default value or initialize as an empty string
   });
 
   useEffect(() => {
     const fetchCoach = async () => {
       try {
         const response = await getCoachById(id);
-        setFormData(response.data);
+        // Check if 'response.data' exists and has the expected properties
+        if (response.data) {
+          const { name, coachType, speciality } = response.data;
+          setFormData({
+            name: name || '', // Check if 'name' exists, otherwise use an empty string
+            coachType: coachType || '', // Check if 'coachType' exists, otherwise use an empty string
+            speciality: speciality || '', // Check if 'speciality' exists, otherwise use an empty string
+          });
+        }
       } catch (error) {
         console.error('Error fetching coach:', error);
       }
@@ -36,7 +43,7 @@ const EditCoachForm = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
     }
-  }; 
+  };
 
   return (
     <div>
@@ -53,5 +60,5 @@ const EditCoachForm = () => {
     </div>
   );
 };
-  
+
 export default EditCoachForm;
