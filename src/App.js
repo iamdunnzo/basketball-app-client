@@ -18,10 +18,15 @@ const NotFound = () => {
 };
 
 const App = () => {
+  const navBarStyle = {
+    backgroundColor: 'blue', // Set the background color to blue
+    color: 'white', // Set the text color to white
+    padding: '10px', // Add padding for better visual appeal
+  };
+
   return (
     <div>
-      <h1>Player Developement App</h1>   
-      <nav>
+      <nav style={navBarStyle}>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -57,7 +62,7 @@ const App = () => {
         <Route path="/players/add" element={<PlayerForm />} />
         <Route path="/players/:id/edit" element={<EditPlayerForm />} />
 
-        {/* Sinker Routes */}
+        {/* Skill Routes */}
         <Route path="/skills" element={<SkillList />} />
         <Route path="/skills/add" element={<SkillForm />} />
         <Route path="/skills/:id/edit" element={<EditSkillForm />} />
@@ -72,7 +77,5 @@ const App = () => {
     </div>
   );
 };
-
-
 
 export default App;
